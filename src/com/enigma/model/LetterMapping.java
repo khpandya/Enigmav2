@@ -1,4 +1,4 @@
-package com.enigma.implementation;
+package com.enigma.model;
 
 import java.util.HashMap;
 
