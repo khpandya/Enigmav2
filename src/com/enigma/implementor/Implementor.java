@@ -8,6 +8,6 @@ import com.enigma.view.EnigmaView;
 public class Implementor {
     IModel model = new EnigmaMachine();
     EnigmaView view = new EnigmaView();
-    EnigmaController controller = new EnigmaController(model,view);
+    EnigmaController controller = new EnigmaController(model, view);
     // TODO controller.view.turnVisible(true)
 }

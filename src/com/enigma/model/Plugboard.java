@@ -14,11 +14,11 @@ public class Plugboard extends LetterMapping{
             char c = input.charAt(i);
             String charOut = String.valueOf(mapping.get(c));
             // * means no connection
-            if (charOut != "*") {
-                output += charOut;
+            if (charOut.equals("*")) {
+                output += c;
             }
             else {
-                output += c;
+                output += charOut;
             }
         }
         return output;

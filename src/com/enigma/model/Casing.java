@@ -13,8 +13,9 @@ public class Casing {
 
     Casing() {
         setReflector(Reflectors.ReflectorA);
-        for (int i=0; i<rotors.size(); i++) {
-            setRotor(i, Rotors.RotorA);
+        for (int i=0; i<3; i++) {
+            Rotor r = new Rotor(Rotors.RotorA);
+            rotors.add(r);
             counters.add(1);
         }
     }
@@ -62,6 +63,6 @@ public class Casing {
 
     public void setRotor(int index, Rotors rotorName) {
         Rotor rotor = new Rotor(rotorName);
-        rotors.set(index,rotor);
+        rotors.set(index, rotor);
     }
 }

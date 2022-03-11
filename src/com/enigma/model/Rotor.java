@@ -8,10 +8,11 @@ import java.util.List;
 
 public class Rotor extends LetterMapping{
     Rotor(Rotors rotorName){
-        List<Character> initialMap = getConstantMapping(rotorName);
+        List<String> initialMap = getConstantMapping(rotorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
-            mapping.put(ch, initialMap.get(counter));
+            mapping.put(ch, initialMap.get(counter).charAt(0));
+            counter += 1;
         }
     }
 
@@ -33,18 +34,15 @@ public class Rotor extends LetterMapping{
         if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
             return input;
         }
-        return String.valueOf(mapping.get(input));
+        return String.valueOf(mapping.get(input.charAt(0)));
     }
 
     private @NotNull
-    List<Character> getConstantMapping(@NotNull Rotors rotorName) {
-        switch (rotorName){
-            case RotorA:
-                return Arrays.asList('A');
-            case RotorB:
-                return Arrays.asList('K');
-            default:
-                return Arrays.asList('M');
-        }
+    List<String> getConstantMapping(@NotNull Rotors rotorName) {
+        return switch (rotorName) {
+            case RotorA -> Arrays.asList("VEOSIRZUJDQCKGWYPNXAFLTHMB".split(""));
+            case RotorB -> Arrays.asList("UEMOATQLSHPKCYFWJZBGVXINDR".split(""));
+            default -> Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+        };
     }
 }

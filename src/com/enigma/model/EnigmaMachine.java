@@ -3,8 +3,6 @@ package com.enigma.model;
 import com.enigma.Reflectors;
 import com.enigma.Rotors;
 
-import java.util.Locale;
-
 public class EnigmaMachine implements IModel {
     private Plugboard plugboard = new Plugboard();
     private Casing casing = new Casing();

@@ -1,7 +1,6 @@
 package com.enigma.model;
 
 import com.enigma.Reflectors;
-import com.enigma.Rotors;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -17,26 +16,24 @@ public class Reflector extends LetterMapping{
         if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
             return input;
         }
-        return String.valueOf(mapping.get(input));
+        return String.valueOf(mapping.get(input.charAt(0)));
     }
 
     Reflector(Reflectors reflectorName){
-        List<Character> initialMap = getConstantMapping(reflectorName);
+        List<String> initialMap = getConstantMapping(reflectorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
-            mapping.put(ch, initialMap.get(counter));
+            mapping.put(ch, initialMap.get(counter).charAt(0));
+            counter += 1;
         }
     }
 
     private @NotNull
-    List<Character> getConstantMapping(@NotNull Reflectors reflectorName) {
-        switch (reflectorName){
-            case ReflectorA:
-                return Arrays.asList('A');
-            case ReflectorB:
-                return Arrays.asList('K');
-            default:
-                return Arrays.asList('M');
-        }
+    List<String> getConstantMapping(@NotNull Reflectors reflectorName) {
+        return switch (reflectorName) {
+            case ReflectorA -> Arrays.asList("VEOSIRZUJDQCKGWYPNXAFLTHMB".split(""));
+            case ReflectorB -> Arrays.asList("UEMOATQLSHPKCYFWJZBGVXINDR".split(""));
+            default -> Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
+        };
     }
 }
