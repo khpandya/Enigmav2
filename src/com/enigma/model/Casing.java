@@ -1,24 +1,67 @@
 package com.enigma.model;
 
+import com.enigma.Reflectors;
+import com.enigma.Rotors;
+
 import java.util.ArrayList;
 
 public class Casing {
     private Reflector reflector;
-    private ArrayList<Rotor> rotors;
+    // 0 represents the left-most and slowest rotor
+    private ArrayList<Rotor> rotors = new ArrayList<>();
+    private ArrayList<Integer> counters = new ArrayList<>();
+
+    Casing() {
+        setReflector(Reflectors.ReflectorA);
+        for (int i=0; i<rotors.size(); i++) {
+            setRotor(i, Rotors.RotorA);
+            counters.add(1);
+        }
+    }
 
     public String getOutput(String input) {
-        return null;
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            char out = getOutput(c);
+            output += String.valueOf(out);
+        }
+        return output;
     }
 
-    public void setReflector(Reflector reflector) {
-        this.reflector = reflector;
+    private void executeRotorMotion() {
+        rotors.get(rotors.size()-1).Rotate();
+        counters.set(counters.size()-1, counters.get(counters.size()-1)+1);
+        for (int i = rotors.size() - 2; i >= 0; i--) {
+            if (counters.get(i)%26 == 0){
+                rotors.get(i).Rotate();
+                counters.set(i,counters.get(i)+1);
+            }
+        }
     }
 
-    public void setRotors(ArrayList<Rotor> rotors) {
-
+    private char getOutput(char inputChar) {
+        char outputChar = inputChar;
+        for (int i = rotors.size() - 1; i >= 0; i--) {
+            Rotor rotor = rotors.get(i);
+            outputChar = rotor.getOutput(String.valueOf(outputChar)).charAt(0);
+        }
+        executeRotorMotion();
+        outputChar = reflector.getOutput(String.valueOf(outputChar)).charAt(0);
+        for (int i = 0; i < rotors.size(); i++) {
+            Rotor rotor = rotors.get(i);
+            outputChar = rotor.getOutput(String.valueOf(outputChar)).charAt(0);
+        }
+        executeRotorMotion();
+        return outputChar;
     }
 
-    public void rotate(Rotor rotor) {
+    public void setReflector(Reflectors reflectorName) {
+        this.reflector = new Reflector(reflectorName);
+    }
 
+    public void setRotor(int index, Rotors rotorName) {
+        Rotor rotor = new Rotor(rotorName);
+        rotors.set(index,rotor);
     }
 }

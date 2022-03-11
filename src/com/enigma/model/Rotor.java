@@ -1,6 +1,7 @@
 package com.enigma.model;
 
 import com.enigma.Rotors;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,8 @@ public class Rotor extends LetterMapping{
         return String.valueOf(mapping.get(input));
     }
 
-    private List<Character> getConstantMapping(Rotors rotorName) {
+    private @NotNull
+    List<Character> getConstantMapping(@NotNull Rotors rotorName) {
         switch (rotorName){
             case RotorA:
                 return Arrays.asList('A');

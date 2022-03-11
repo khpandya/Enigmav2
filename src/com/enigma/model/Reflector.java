@@ -1,5 +1,12 @@
 package com.enigma.model;
 
+import com.enigma.Reflectors;
+import com.enigma.Rotors;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Reflector extends LetterMapping{
     /**
      * @param input the character input into the component
@@ -7,6 +14,26 @@ public class Reflector extends LetterMapping{
      */
     @Override
     public String getOutput(String input) {
-        return null;
+        return String.valueOf(mapping.get(input));
+    }
+
+    Reflector(Reflectors reflectorName){
+        List<Character> initialMap = getConstantMapping(reflectorName);
+        int counter = 0;
+        for (char ch = 'A'; ch <= 'Z'; ch++){
+            mapping.put(ch, initialMap.get(counter));
+        }
+    }
+
+    private @NotNull
+    List<Character> getConstantMapping(@NotNull Reflectors reflectorName) {
+        switch (reflectorName){
+            case ReflectorA:
+                return Arrays.asList('A');
+            case ReflectorB:
+                return Arrays.asList('K');
+            default:
+                return Arrays.asList('M');
+        }
     }
 }

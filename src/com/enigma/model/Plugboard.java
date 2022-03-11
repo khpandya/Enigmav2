@@ -1,12 +1,14 @@
 package com.enigma.model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Plugboard extends LetterMapping{
     /**
      * @param input the characters input into the plugboard
      * @return the output after replacing characters according to plugboard mapping
      */
     @Override
-    public String getOutput(String input) {
+    public String getOutput(@NotNull String input) {
         String output = "";
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
