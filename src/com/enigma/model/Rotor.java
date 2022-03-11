@@ -19,7 +19,7 @@ public class Rotor extends LetterMapping{
         char chAtA = mapping.get('A');
         for (char ch = 'B'; ch <= 'Z'; ch++){
             char trailingChar = (char) (ch-1);
-            mapping.replace(trailingChar,ch);
+            mapping.replace(trailingChar,mapping.get(ch));
         } // A gets B, B gets C...Y gets Z
         mapping.replace('Z',chAtA);
     }
@@ -30,6 +30,9 @@ public class Rotor extends LetterMapping{
      */
     @Override
     public String getOutput(String input) {
+        if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
+            return input;
+        }
         return String.valueOf(mapping.get(input));
     }
 

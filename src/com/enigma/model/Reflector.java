@@ -14,6 +14,9 @@ public class Reflector extends LetterMapping{
      */
     @Override
     public String getOutput(String input) {
+        if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
+            return input;
+        }
         return String.valueOf(mapping.get(input));
     }
 

@@ -1,25 +1,30 @@
 package com.enigma.model;
 
+import com.enigma.Reflectors;
+import com.enigma.Rotors;
+
+import java.util.Locale;
+
 public class EnigmaMachine implements IModel {
-    private Plugboard plugboard;
-    private Casing casing;
+    private Plugboard plugboard = new Plugboard();
+    private Casing casing = new Casing();
 
     @Override
     public String getEncryptedMessage(String input) {
-        // TODO all caps, remove invalid characters
+        input = input.toUpperCase();
         String plugboardOutput = plugboard.getOutput(input);
         String casingOutput = casing.getOutput(plugboardOutput);
         return plugboard.getOutput(casingOutput);
     }
 
     @Override
-    public void setRotor(String rotorPosition, String rotorName) {
-
+    public void setRotor(int index, Rotors rotorName) {
+        casing.setRotor(index, rotorName);
     }
 
     @Override
-    public void setReflector(String reflectorName) {
-
+    public void setReflector(Reflectors reflectorName) {
+        casing.setReflector(reflectorName);
     }
 
     /**
@@ -41,11 +46,6 @@ public class EnigmaMachine implements IModel {
         plugboard.deleteConnection(letter);
     }
 
-    @Override
-    public void resetRotors() {
-
-    }
-
     /**
      * deletes all connections present on the plugboard
      */
@@ -54,12 +54,16 @@ public class EnigmaMachine implements IModel {
         this.plugboard = new Plugboard();
     }
 
+    public void resetCasing() {
+        this.casing = new Casing();
+    }
+
     /**
      * deletes all connections on the plugboard
      */
     @Override
     public void resetToDefaultSettings() {
         resetPlugboard();
-        this.casing = new Casing();
+        resetCasing();
     }
 }
