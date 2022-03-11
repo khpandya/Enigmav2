@@ -6,7 +6,7 @@ import java.util.HashMap;
  * LetterMapping represents a one-to-one mapping of the alphabet with a hashmap
  */
 public abstract class LetterMapping {
-    private HashMap<String,String> mapping = new HashMap<String,String>();
+    protected HashMap<Character, Character> mapping = new HashMap<Character, Character>();
 
     /**
      * @param input the character input into the component
@@ -19,6 +19,6 @@ public abstract class LetterMapping {
      */
     LetterMapping(){
         for (char ch = 'A'; ch <= 'Z'; ++ch)
-            mapping.put(String.valueOf(ch), "");
+            mapping.put(ch, '*');
     }
 }
