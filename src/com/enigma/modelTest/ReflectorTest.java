@@ -9,11 +9,15 @@ class ReflectorTest {
     @Test
     void getOutput() {
         Reflector r = new Reflector(Reflectors.ReflectorA);
-        assert "V".equals(r.getOutput("A"));
-        assert "B".equals(r.getOutput("Z"));
+        String x = r.getOutput("A");
+        assert "A".equals(r.getOutput(x));
+        String y = r.getOutput("Z");
+        assert "Z".equals(r.getOutput(y));
         Reflector r2 = new Reflector(Reflectors.ReflectorB);
-        assert "U".equals(r2.getOutput("A"));
-        assert "R".equals(r2.getOutput("Z"));
+        String x2 = r2.getOutput("A");
+        assert "A".equals(r2.getOutput(x2));
+        String y2 = r2.getOutput("Z");
+        assert "Z".equals(r2.getOutput(y2));
         assert "*".equals(r2.getOutput("*"));
     }
 }
