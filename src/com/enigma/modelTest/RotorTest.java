@@ -30,5 +30,6 @@ class RotorTest {
         assert "U".equals(r2.getOutput("A"));
         assert "E".equals(r2.getOutput("B"));
         assert "M".equals(r2.getOutput("C"));
+        assert "*".equals(r2.getOutput("*"));
     }
 }
