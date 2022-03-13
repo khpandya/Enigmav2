@@ -9,6 +9,7 @@ class PlugboardTest {
     void getOutput() {
         Plugboard pb = new Plugboard();
         assert "CAT".equals(pb.getOutput("CAT"));
+        assert "*".equals(pb.getOutput("*"));
     }
 
     @Test

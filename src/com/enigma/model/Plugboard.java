@@ -14,7 +14,7 @@ public class Plugboard extends LetterMapping{
             char c = input.charAt(i);
             String charOut = String.valueOf(mapping.get(c));
             // * means no connection
-            if (charOut.equals("*")) {
+            if (charOut.equals("*") || invalidLetter(c)) {
                 output += c;
             }
             else {
