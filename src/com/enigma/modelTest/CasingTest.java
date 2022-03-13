@@ -2,19 +2,17 @@ package com.enigma.modelTest;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class PlugboardRoughTest {
+class CasingTest {
 
     @Test
     void getOutput() {
     }
 
     @Test
-    void addConnection() {
+    void setReflector() {
     }
 
     @Test
-    void deleteConnection() {
+    void setRotor() {
     }
 }

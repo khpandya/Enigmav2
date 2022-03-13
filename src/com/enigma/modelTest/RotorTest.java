@@ -2,9 +2,11 @@ package com.enigma.modelTest;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+class RotorTest {
 
-class ReflectorRoughTest {
+    @Test
+    void rotate() {
+    }
 
     @Test
     void getOutput() {

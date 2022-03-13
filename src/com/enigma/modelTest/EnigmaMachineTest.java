@@ -1,6 +1,6 @@
 package com.enigma.modelTest;
 
-class EnigmaMachineRoughTest {
+class EnigmaMachineTest {
 
     @org.junit.jupiter.api.Test
     void getEncryptedMessage() {
