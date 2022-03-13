@@ -19,7 +19,7 @@ public class Reflector extends LetterMapping{
         return String.valueOf(mapping.get(input.charAt(0)));
     }
 
-    Reflector(Reflectors reflectorName){
+    public Reflector(Reflectors reflectorName){
         List<String> initialMap = getConstantMapping(reflectorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
