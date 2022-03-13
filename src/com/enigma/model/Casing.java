@@ -11,7 +11,7 @@ public class Casing {
     private ArrayList<Rotor> rotors = new ArrayList<>();
     private ArrayList<Integer> counters = new ArrayList<>();
 
-    Casing() {
+    public Casing() {
         setReflector(Reflectors.ReflectorA);
         for (int i=0; i<3; i++) {
             Rotor r = new Rotor(Rotors.RotorA);
@@ -47,7 +47,7 @@ public class Casing {
             Rotor rotor = rotors.get(i);
             outputChar = rotor.getOutput(String.valueOf(outputChar)).charAt(0);
         }
-        executeRotorMotion();
+        // executeRotorMotion();
         outputChar = reflector.getOutput(String.valueOf(outputChar)).charAt(0);
         for (int i = 0; i < rotors.size(); i++) {
             Rotor rotor = rotors.get(i);
