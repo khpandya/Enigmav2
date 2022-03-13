@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Rotor extends LetterMapping{
-    Rotor(Rotors rotorName){
+    public Rotor(Rotors rotorName){
         List<String> initialMap = getConstantMapping(rotorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
@@ -30,7 +30,7 @@ public class Rotor extends LetterMapping{
      * @return the character that's mapped to the input
      */
     @Override
-    public String getOutput(String input) {
+    public String getOutput(@NotNull String input) {
         if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
             return input;
         }
