@@ -51,7 +51,8 @@ public class Casing {
         outputChar = reflector.getOutput(String.valueOf(outputChar)).charAt(0);
         for (int i = 0; i < rotors.size(); i++) {
             Rotor rotor = rotors.get(i);
-            outputChar = rotor.getOutput(String.valueOf(outputChar)).charAt(0);
+            // TODO read left-to-right mapping not right-to-left. Make letter-mapping a bimap.
+            outputChar = rotor.getInverseOutput(String.valueOf(outputChar)).charAt(0);
         }
         executeRotorMotion();
         return outputChar;

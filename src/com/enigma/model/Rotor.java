@@ -11,7 +11,7 @@ public class Rotor extends LetterMapping{
         List<String> initialMap = getConstantMapping(rotorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
-            mapping.put(ch, initialMap.get(counter).charAt(0));
+            mapping.forcePut(ch, initialMap.get(counter).charAt(0));
             counter += 1;
         }
     }
@@ -20,9 +20,9 @@ public class Rotor extends LetterMapping{
         char chAtA = mapping.get('A');
         for (char ch = 'B'; ch <= 'Z'; ch++){
             char trailingChar = (char) (ch-1);
-            mapping.replace(trailingChar, mapping.get(ch));
+            mapping.forcePut(trailingChar, mapping.get(ch));
         } // A gets B, B gets C...Y gets Z
-        mapping.replace('Z',chAtA);
+        mapping.forcePut('Z',chAtA);
     }
 
     /**
@@ -35,6 +35,13 @@ public class Rotor extends LetterMapping{
             return input;
         }
         return String.valueOf(mapping.get(input.charAt(0)));
+    }
+
+    public String getInverseOutput(String input) {
+        if (input.charAt(0) < 'A' || input.charAt(0) > 'Z') {
+            return input;
+        }
+        return String.valueOf(mapping.inverse().get(input.charAt(0)));
     }
 
     private @NotNull

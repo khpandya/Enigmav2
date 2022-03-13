@@ -14,7 +14,7 @@ public class Plugboard extends LetterMapping{
             char c = input.charAt(i);
             String charOut = String.valueOf(mapping.get(c));
             // * means no connection
-            if (charOut.equals("*") || invalidLetter(c)) {
+            if (invalidLetter(c)) {
                 output += c;
             }
             else {
@@ -42,8 +42,8 @@ public class Plugboard extends LetterMapping{
         }
         deleteConnection(letterOne);
         deleteConnection(letterTwo);
-        mapping.replace(letterOne,letterTwo);
-        mapping.replace(letterTwo,letterOne);
+        mapping.forcePut(letterOne,letterTwo);
+        mapping.forcePut(letterTwo,letterOne);
     }
 
     /**
@@ -54,12 +54,8 @@ public class Plugboard extends LetterMapping{
         if (invalidLetter(letter)){
             return;
         }
-
         char connectedTo = mapping.get(letter);
-        if (connectedTo != '*') {
-            mapping.replace(connectedTo, '*');
-        }
-
-        mapping.replace(letter,'*');
+        mapping.forcePut(connectedTo,connectedTo);
+        mapping.forcePut(letter,letter);
     }
 }

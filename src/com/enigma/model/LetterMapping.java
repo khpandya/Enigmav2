@@ -1,12 +1,18 @@
 package com.enigma.model;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * LetterMapping represents a one-to-one mapping of the alphabet with a hashmap
  */
 public abstract class LetterMapping {
-    protected HashMap<Character, Character> mapping = new HashMap<Character, Character>();
+    protected BiMap<Character, Character> mapping = HashBiMap.create();
 
     /**
      * @param input the character input into the component
@@ -19,6 +25,6 @@ public abstract class LetterMapping {
      */
     LetterMapping(){
         for (char ch = 'A'; ch <= 'Z'; ++ch)
-            mapping.put(ch, '*');
+            mapping.put(ch, ch);
     }
 }

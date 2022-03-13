@@ -23,7 +23,7 @@ public class Reflector extends LetterMapping{
         List<String> initialMap = getConstantMapping(reflectorName);
         int counter = 0;
         for (char ch = 'A'; ch <= 'Z'; ch++){
-            mapping.put(ch, initialMap.get(counter).charAt(0));
+            mapping.forcePut(ch, initialMap.get(counter).charAt(0));
             counter += 1;
         }
     }
