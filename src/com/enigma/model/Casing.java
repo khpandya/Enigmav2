@@ -47,7 +47,6 @@ public class Casing {
             Rotor rotor = rotors.get(i);
             outputChar = rotor.getOutput(String.valueOf(outputChar)).charAt(0);
         }
-        // executeRotorMotion();
         outputChar = reflector.getOutput(String.valueOf(outputChar)).charAt(0);
         for (int i = 0; i < rotors.size(); i++) {
             Rotor rotor = rotors.get(i);

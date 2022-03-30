@@ -13,7 +13,6 @@ public class Plugboard extends LetterMapping{
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             String charOut = String.valueOf(mapping.get(c));
-            // * means no connection
             if (invalidLetter(c)) {
                 output += c;
             }

@@ -8,7 +8,7 @@ class EnigmaMachineTest {
     @org.junit.jupiter.api.Test
     void getEncryptedMessage() {
         IModel model = new EnigmaMachine();
-        String encrypted = model.getEncryptedMessage("cat");
+        String encrypted = model.getEncryptedMessage("cAt");
         model.resetToDefaultSettings();
         String decrypted = model.getEncryptedMessage(encrypted);
         assert "CAT".equals(decrypted);
