@@ -60,7 +60,9 @@ public class EnigmaView extends JFrame implements IView {
 
     @Override
     public void setRotorPositions(ArrayList<Integer> values) {
-
+        slider1.setValue(values.get(0));
+        slider2.setValue(values.get(1));
+        slider3.setValue(values.get(2));
     }
 
     @Override

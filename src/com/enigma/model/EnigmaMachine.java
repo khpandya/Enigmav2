@@ -3,6 +3,8 @@ package com.enigma.model;
 import com.enigma.Reflectors;
 import com.enigma.Rotors;
 
+import java.util.ArrayList;
+
 public class EnigmaMachine implements IModel {
     private Plugboard plugboard = new Plugboard();
     private Casing casing = new Casing();
@@ -18,6 +20,22 @@ public class EnigmaMachine implements IModel {
     @Override
     public void setRotor(int index, Rotors rotorName) {
         casing.setRotor(index, rotorName);
+    }
+
+    /**
+     * rotates a rotor at index until it is at 'newPosition'
+     *
+     * @param index
+     * @param newPosition
+     */
+    @Override
+    public void changeRotorPosition(int index, int newPosition) {
+        casing.changeRotorPosition(index, newPosition);
+    }
+
+    @Override
+    public ArrayList<Integer> getRotorPositions() {
+        return casing.getRotorPositions();
     }
 
     @Override

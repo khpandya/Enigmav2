@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Rotor extends LetterMapping{
+    private int numericPosition = 1;
     public Rotor(Rotors rotorName){
         List<String> initialMap = getConstantMapping(rotorName);
         int counter = 0;
@@ -16,6 +17,10 @@ public class Rotor extends LetterMapping{
         }
     }
 
+    public int getNumericPosition() {
+        return numericPosition;
+    }
+
     public void Rotate(){
         char chAtA = mapping.get('A');
         for (char ch = 'B'; ch <= 'Z'; ch++){
@@ -23,6 +28,11 @@ public class Rotor extends LetterMapping{
             mapping.forcePut(trailingChar, mapping.get(ch));
         } // A gets B, B gets C...Y gets Z
         mapping.forcePut('Z',chAtA);
+        if (numericPosition == 26) {
+            numericPosition = 1;
+        } else {
+            numericPosition += 1;
+        }
     }
 
     /**

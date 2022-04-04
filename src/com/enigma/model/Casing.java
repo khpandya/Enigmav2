@@ -20,6 +20,23 @@ public class Casing {
         }
     }
 
+    public void changeRotorPosition(int rotorIndex, int newPosition) {
+        if (rotorIndex < 0 || rotorIndex > rotors.size()-1 || newPosition < 1 || newPosition > 26) {
+            return;
+        }
+        while(rotors.get(rotorIndex).getNumericPosition() != newPosition) {
+            rotors.get(rotorIndex).Rotate();
+        }
+    }
+
+    public ArrayList<Integer> getRotorPositions() {
+        ArrayList<Integer> positions = new ArrayList<>();
+        for (int i=0; i < rotors.size(); i++) {
+            positions.add(rotors.get(i).getNumericPosition());
+        }
+        return positions;
+    }
+
     public String getOutput(String input) {
         String output = "";
         for (int i = 0; i < input.length(); i++) {

@@ -5,6 +5,7 @@ import com.enigma.view.IView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class EnigmaController {
     private IModel enigmaModel;
@@ -21,15 +22,25 @@ public class EnigmaController {
         public void actionPerformed(ActionEvent e) {
             enigmaModel.resetToDefaultSettings();
             enigmaView.setOutput("");
+            ArrayList<Integer> values = new ArrayList<>();
+            values.add(0);
+            values.add(0);
+            values.add(0);
+            enigmaView.setRotorPositions(values);
         }
     }
 
     class EncryptionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String input = enigmaView.getInput();
+            ArrayList<Integer> rotorPositions = enigmaView.getRotorValues();
             try {
+                for(int i = 0; i < rotorPositions.size(); i++) {
+                    enigmaModel.changeRotorPosition(i, rotorPositions.get(i));
+                }
                 String output = enigmaModel.getEncryptedMessage(input);
                 enigmaView.setOutput(output);
+                enigmaView.setRotorPositions(enigmaModel.getRotorPositions());
             }
             catch (Exception ex) {
                 System.out.println(ex);
