@@ -10,4 +10,5 @@ public interface IView {
     void displayError(String errorMessage);
     void setRotorPositions(ArrayList<Integer> values);
     void setOutput(String output);
+    void addResetListener(ActionListener listener);
 }

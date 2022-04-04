@@ -14,6 +14,14 @@ public class EnigmaController {
         this.enigmaModel = model;
         this.enigmaView = view;
         enigmaView.addEncryptListener(new EncryptionListener());
+        enigmaView.addResetListener(new ResetListener());
+    }
+
+    class ResetListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            enigmaModel.resetToDefaultSettings();
+            enigmaView.setOutput("");
+        }
     }
 
     class EncryptionListener implements ActionListener {

@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class EnigmaView extends JFrame implements IView {
     private JButton encrypt = new JButton("encrypt");
     private JButton decrypt = new JButton("decrypt");
+    private JButton reset = new JButton("reset");
     private JTextArea inputText = new JTextArea(20,20);
     private JTextArea outputText = new JTextArea(20,20);
-    // TODO: can make slider adding and returning dynamic
+    // TODO: can make slider adding dynamic
     private JSlider slider1 = new JSlider();
     private JSlider slider2 = new JSlider();
     private JSlider slider3 = new JSlider();
@@ -23,6 +24,7 @@ public class EnigmaView extends JFrame implements IView {
         this.setSize(800, 800);
         mainPanel.add(encrypt);
         mainPanel.add(decrypt);
+        mainPanel.add(reset);
         mainPanel.add(inputPane);
         mainPanel.add(outputPane);
         mainPanel.add(slider1);
@@ -48,6 +50,10 @@ public class EnigmaView extends JFrame implements IView {
         decrypt.addActionListener(listener);
     }
 
+    public void addResetListener(ActionListener listener) {
+        reset.addActionListener(listener);
+    }
+
     public void displayError(String errorMessage) {
         JOptionPane.showMessageDialog(this, errorMessage);
     }
@@ -59,6 +65,6 @@ public class EnigmaView extends JFrame implements IView {
 
     @Override
     public void setOutput(String output) {
-        outputText.append(output);
+        outputText.setText(output);
     }
 }
