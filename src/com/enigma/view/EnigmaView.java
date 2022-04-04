@@ -4,31 +4,30 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class EnigmaView extends JFrame {
+public class EnigmaView extends JFrame implements IView {
     private JButton encrypt = new JButton("encrypt");
     private JButton decrypt = new JButton("decrypt");
-    private JTextArea inputText;
-    private JTextArea outputText;
+    private JTextArea inputText = new JTextArea(20,20);
+    private JTextArea outputText = new JTextArea(20,20);
     // TODO: can make slider adding and returning dynamic
-    private JSlider slider1;
-    private JSlider slider2;
-    private JSlider slider3;
+    private JSlider slider1 = new JSlider();
+    private JSlider slider2 = new JSlider();
+    private JSlider slider3 = new JSlider();
 
-    private void addElementsToMainPanel(JPanel mainPanel) {
+    public EnigmaView() {
+        JPanel mainPanel = new JPanel();
+        outputText.setEditable(false);
+        JScrollPane inputPane = new JScrollPane(inputText);
+        JScrollPane outputPane = new JScrollPane(outputText);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 800);
         mainPanel.add(encrypt);
         mainPanel.add(decrypt);
-        mainPanel.add(inputText);
-        mainPanel.add(outputText);
+        mainPanel.add(inputPane);
+        mainPanel.add(outputPane);
         mainPanel.add(slider1);
         mainPanel.add(slider2);
         mainPanel.add(slider3);
-    }
-
-    public EnigmaView() {
-        JPanel mainPanel = new JPanel();
-        addElementsToMainPanel(mainPanel);
         this.add(mainPanel);
     }
 
@@ -44,12 +43,22 @@ public class EnigmaView extends JFrame {
         return values;
     }
 
-    void addEncrpytListener(ActionListener listener) {
+    public void addEncryptListener(ActionListener listener) {
         encrypt.addActionListener(listener);
         decrypt.addActionListener(listener);
     }
 
-    void displayError(String errorMessage) {
+    public void displayError(String errorMessage) {
         JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+    @Override
+    public void setRotorPositions(ArrayList<Integer> values) {
+
+    }
+
+    @Override
+    public void setOutput(String output) {
+        outputText.append(output);
     }
 }
