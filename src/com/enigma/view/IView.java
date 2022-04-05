@@ -1,5 +1,7 @@
 package com.enigma.view;
 
+import com.google.common.collect.BiMap;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -12,4 +14,9 @@ public interface IView {
     void displayError(String errorMessage);
     void setOutput(String output);
     void addResetListener(ActionListener listener);
+    void resetPlugboard();
+    String getLetterOne();
+    String getLetterTwo();
+    void addConnectListener(ActionListener listener);
+    void updatePlugboard(BiMap<Character, Character> mapping);
 }

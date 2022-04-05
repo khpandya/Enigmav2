@@ -2,6 +2,7 @@ package com.enigma.model;
 
 import com.enigma.Reflectors;
 import com.enigma.Rotors;
+import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public interface IModel {
     void setReflector(Reflectors reflectorName);
     void createPlugboardConnection(char letterOne, char letterTwo);
     void deletePlugboardConnection(char letter);
+    BiMap<Character, Character> getPlugboard();
     void resetPlugboard();
     void resetCasing();
     void resetToDefaultSettings();

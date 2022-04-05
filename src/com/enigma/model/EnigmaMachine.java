@@ -2,6 +2,7 @@ package com.enigma.model;
 
 import com.enigma.Reflectors;
 import com.enigma.Rotors;
+import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,11 @@ public class EnigmaMachine implements IModel {
     @Override
     public void deletePlugboardConnection(char letter) {
         plugboard.deleteConnection(letter);
+    }
+
+    @Override
+    public BiMap<Character, Character> getPlugboard() {
+        return plugboard.mapping;
     }
 
     /**

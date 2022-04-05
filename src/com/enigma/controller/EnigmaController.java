@@ -16,6 +16,22 @@ public class EnigmaController {
         this.enigmaView = view;
         enigmaView.addEncryptListener(new EncryptionListener());
         enigmaView.addResetListener(new ResetListener());
+        enigmaView.addConnectListener(new connectListener());
+    }
+
+    class connectListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if(enigmaView.getLetterOne().length() != 1 || enigmaView.getLetterTwo().length() != 1) {
+                    throw new Exception("0 or more than 1 characters entered");
+                }
+                enigmaModel.createPlugboardConnection(enigmaView.getLetterOne().charAt(0),enigmaView.getLetterTwo().charAt(0));
+                enigmaView.updatePlugboard(enigmaModel.getPlugboard());
+            }
+            catch (Exception ex) {
+                enigmaView.displayError("check letter input");
+            }
+        }
     }
 
     class ResetListener implements ActionListener {
@@ -23,6 +39,7 @@ public class EnigmaController {
             enigmaModel.resetToDefaultSettings();
             enigmaView.setOutput("");
             enigmaView.resetRotors();
+            enigmaView.resetPlugboard();
         }
     }
 
