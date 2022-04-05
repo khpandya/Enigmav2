@@ -7,15 +7,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class EnigmaView extends JFrame implements IView {
-    // TODO make table uneditable
-    // only one row selectable
-    // add delete listener
     JPanel mainPanel = new JPanel();
     private JButton encrypt = new JButton("encrypt");
     private JButton decrypt = new JButton("decrypt");
     private JButton connect = new JButton("connect");
+    private JButton delete = new JButton("delete");
     private JTextField letterOne = new JTextField(1);
     private JTextField letterTwo = new JTextField(1);
+    private JTextField letterToDelete = new JTextField(1);
     private JButton reset = new JButton("reset");
     private JTextArea inputText = new JTextArea(20,20);
     private JTextArea outputText = new JTextArea(20,20);
@@ -42,6 +41,7 @@ public class EnigmaView extends JFrame implements IView {
             plugboard.setValueAt(ch, counter, 1);
             counter += 1;
         }
+        plugboard.setDefaultEditor(Object.class, null);
     }
 
     public EnigmaView() {
@@ -61,6 +61,8 @@ public class EnigmaView extends JFrame implements IView {
         mainPanel.add(connect);
         mainPanel.add(letterOne);
         mainPanel.add(letterTwo);
+        mainPanel.add(delete);
+        mainPanel.add(letterToDelete);
         this.add(mainPanel);
     }
 
@@ -89,8 +91,16 @@ public class EnigmaView extends JFrame implements IView {
         decrypt.addActionListener(listener);
     }
 
-    public void addConnectListener(ActionListener listener){
+    public void addConnectListener(ActionListener listener) {
         connect.addActionListener(listener);
+    }
+
+    public void addDeleteListener(ActionListener listener) {
+        delete.addActionListener(listener);
+    }
+
+    public String getLetterToDelete() {
+        return letterToDelete.getText();
     }
 
     @Override

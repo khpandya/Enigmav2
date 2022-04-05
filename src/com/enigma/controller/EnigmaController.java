@@ -17,6 +17,29 @@ public class EnigmaController {
         enigmaView.addEncryptListener(new EncryptionListener());
         enigmaView.addResetListener(new ResetListener());
         enigmaView.addConnectListener(new connectListener());
+        enigmaView.addDeleteListener(new deleteListener());
+    }
+
+    class deleteListener implements ActionListener {
+
+        /**
+         * Invoked when an action occurs.
+         *
+         * @param e the event to be processed
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if(enigmaView.getLetterToDelete().length() != 1) {
+                    throw new Exception("0 or more than 1 characters entered");
+                }
+                enigmaModel.deletePlugboardConnection(enigmaView.getLetterToDelete().charAt(0));
+                enigmaView.updatePlugboard(enigmaModel.getPlugboard());
+            }
+            catch (Exception ex) {
+                enigmaView.displayError("check letter input");
+            }
+        }
     }
 
     class connectListener implements ActionListener {

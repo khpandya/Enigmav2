@@ -18,5 +18,7 @@ public interface IView {
     String getLetterOne();
     String getLetterTwo();
     void addConnectListener(ActionListener listener);
+    void addDeleteListener(ActionListener listener);
+    String getLetterToDelete();
     void updatePlugboard(BiMap<Character, Character> mapping);
 }
