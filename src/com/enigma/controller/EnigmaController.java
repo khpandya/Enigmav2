@@ -6,6 +6,8 @@ import com.enigma.view.IView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class EnigmaController {
     private IModel enigmaModel;
@@ -22,11 +24,7 @@ public class EnigmaController {
         public void actionPerformed(ActionEvent e) {
             enigmaModel.resetToDefaultSettings();
             enigmaView.setOutput("");
-            ArrayList<Integer> values = new ArrayList<>();
-            values.add(0);
-            values.add(0);
-            values.add(0);
-            enigmaView.setRotorPositions(values);
+            enigmaView.resetRotors();
         }
     }
 

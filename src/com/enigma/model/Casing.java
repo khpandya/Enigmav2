@@ -9,14 +9,14 @@ public class Casing {
     private Reflector reflector;
     // 0 represents the left-most and slowest rotor
     private ArrayList<Rotor> rotors = new ArrayList<>();
-    private ArrayList<Integer> counters = new ArrayList<>();
+    // used to decide if a rotor should rotate, note that a rotor's numeric position is totally unrelated
+    private int infiniteCounter = 1;
 
     public Casing() {
         setReflector(Reflectors.ReflectorA);
         for (int i=0; i<3; i++) {
             Rotor r = new Rotor(Rotors.RotorA);
             rotors.add(r);
-            counters.add(1);
         }
     }
 
@@ -25,6 +25,8 @@ public class Casing {
             return;
         }
         while(rotors.get(rotorIndex).getNumericPosition() != newPosition) {
+            // manual rotation (changing slider) is like taking out the rotor and putting it back in at a certain
+            // position, so we don't call executeRotorMotion() to rotate ones to the left or change infiniteCounter
             rotors.get(rotorIndex).Rotate();
         }
     }
@@ -48,12 +50,14 @@ public class Casing {
     }
 
     private void executeRotorMotion() {
+        // rightmost always rotates
         rotors.get(rotors.size()-1).Rotate();
-        counters.set(counters.size()-1, counters.get(counters.size()-1)+1);
+        infiniteCounter += 1;
+        // others rotate at multiples of 26^reverseRotorIndex
         for (int i = rotors.size() - 2; i >= 0; i--) {
-            if (counters.get(i)%26 == 0){
+            int reverseRotorIndex = rotors.size() - (i+1);
+            if (infiniteCounter%Math.pow(26,reverseRotorIndex) == 0){
                 rotors.get(i).Rotate();
-                counters.set(i,counters.get(i)+1);
             }
         }
     }
@@ -67,7 +71,6 @@ public class Casing {
         outputChar = reflector.getOutput(String.valueOf(outputChar)).charAt(0);
         for (int i = 0; i < rotors.size(); i++) {
             Rotor rotor = rotors.get(i);
-            // TODO read left-to-right mapping not right-to-left. Make letter-mapping a bimap.
             outputChar = rotor.getInverseOutput(String.valueOf(outputChar)).charAt(0);
         }
         executeRotorMotion();
