@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 public class EnigmaView extends JFrame implements IView {
     JPanel mainPanel = new JPanel();
+    private JComboBox reflectors = new JComboBox(new String[]{"Reflector A", "Reflector B", "Reflector C"});
+    private JComboBox rotor1 = new JComboBox(new String[]{"Rotor A", "Rotor B", "Rotor C"});
+    private JComboBox rotor2 = new JComboBox(new String[]{"Rotor A", "Rotor B", "Rotor C"});
+    private JComboBox rotor3 = new JComboBox(new String[]{"Rotor A", "Rotor B", "Rotor C"});
     private JButton encrypt = new JButton("encrypt");
     private JButton decrypt = new JButton("decrypt");
     private JButton connect = new JButton("connect");
@@ -20,6 +24,13 @@ public class EnigmaView extends JFrame implements IView {
     private JTextArea outputText = new JTextArea(20,20);
     private ArrayList<JSlider> sliders = new ArrayList<>();
     private JTable plugboard = new JTable(26, 2);
+
+    public void resetRotorsAndReflector() {
+        reflectors.setSelectedItem("Reflector A");
+        rotor1.setSelectedItem("Rotor A");
+        rotor2.setSelectedItem("Rotor B");
+        rotor3.setSelectedItem("Rotor C");
+    }
 
     private void initializeSliders() {
         for(int i = 0; i < 3; i++) {
@@ -50,6 +61,11 @@ public class EnigmaView extends JFrame implements IView {
         JScrollPane outputPane = new JScrollPane(outputText);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1200, 1200);
+        resetRotorsAndReflector();
+        mainPanel.add(reflectors);
+        mainPanel.add(rotor1);
+        mainPanel.add(rotor2);
+        mainPanel.add(rotor3);
         mainPanel.add(encrypt);
         mainPanel.add(decrypt);
         mainPanel.add(reset);
@@ -68,6 +84,21 @@ public class EnigmaView extends JFrame implements IView {
 
     public String getInput() {
         return inputText.getText();
+    }
+
+    public String getReflector() {
+        return (String) reflectors.getSelectedItem();
+    }
+
+    public String getRotor1() {
+        return (String) rotor1.getSelectedItem();
+    }
+
+    public String getRotor2() {
+        return (String) rotor2.getSelectedItem();
+    }
+    public String getRotor3() {
+        return (String) rotor3.getSelectedItem();
     }
 
     public String getLetterOne() {
@@ -133,7 +164,7 @@ public class EnigmaView extends JFrame implements IView {
         outputText.setText(output);
     }
 
-    public void resetRotors() {
+    public void resetRotorPositions() {
         for (int i = 0; i < sliders.size(); i++) {
             sliders.get(i).setValue(1);
         }

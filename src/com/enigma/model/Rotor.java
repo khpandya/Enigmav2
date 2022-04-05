@@ -59,6 +59,7 @@ public class Rotor extends LetterMapping{
         return switch (rotorName) {
             case RotorA -> Arrays.asList("VEOSIRZUJDQCKGWYPNXAFLTHMB".split(""));
             case RotorB -> Arrays.asList("UEMOATQLSHPKCYFWJZBGVXINDR".split(""));
+            case RotorC -> Arrays.asList("DMTWSILRUYQNKFEJCAZBPGXOHV".split(""));
             default -> Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
         };
     }

@@ -9,7 +9,7 @@ public interface IView {
     String getInput();
     ArrayList<Integer> getRotorValues();
     void setRotorPositions(ArrayList<Integer> values);
-    void resetRotors();
+    void resetRotorPositions();
     void addEncryptListener(ActionListener listener);
     void displayError(String errorMessage);
     void setOutput(String output);
@@ -20,5 +20,10 @@ public interface IView {
     void addConnectListener(ActionListener listener);
     void addDeleteListener(ActionListener listener);
     String getLetterToDelete();
+    String getReflector();
+    String getRotor1();
+    String getRotor2();
+    String getRotor3();
     void updatePlugboard(BiMap<Character, Character> mapping);
+    void resetRotorsAndReflector();
 }

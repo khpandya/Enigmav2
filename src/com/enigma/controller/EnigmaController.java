@@ -1,5 +1,7 @@
 package com.enigma.controller;
 
+import com.enigma.Reflectors;
+import com.enigma.Rotors;
 import com.enigma.model.IModel;
 import com.enigma.view.IView;
 
@@ -18,6 +20,22 @@ public class EnigmaController {
         enigmaView.addResetListener(new ResetListener());
         enigmaView.addConnectListener(new connectListener());
         enigmaView.addDeleteListener(new deleteListener());
+    }
+
+    private Rotors stringToRotor(String rotorName) {
+        switch (rotorName){
+            case "Rotor B": return Rotors.RotorB;
+            case "Rotor C": return Rotors.RotorC;
+            default: return Rotors.RotorA;
+        }
+    }
+
+    private Reflectors stringToReflector(String reflectorName) {
+        switch (reflectorName){
+            case "Reflector B": return Reflectors.ReflectorB;
+            case "Reflector C": return Reflectors.ReflectorC;
+            default: return Reflectors.ReflectorA;
+        }
     }
 
     class deleteListener implements ActionListener {
@@ -61,8 +79,9 @@ public class EnigmaController {
         public void actionPerformed(ActionEvent e) {
             enigmaModel.resetToDefaultSettings();
             enigmaView.setOutput("");
-            enigmaView.resetRotors();
+            enigmaView.resetRotorPositions();
             enigmaView.resetPlugboard();
+            enigmaView.resetRotorsAndReflector();
         }
     }
 
@@ -71,6 +90,10 @@ public class EnigmaController {
             String input = enigmaView.getInput();
             ArrayList<Integer> rotorPositions = enigmaView.getRotorValues();
             try {
+                enigmaModel.setReflector(stringToReflector(enigmaView.getReflector()));
+                enigmaModel.setRotor(0, stringToRotor(enigmaView.getRotor1()));
+                enigmaModel.setRotor(1, stringToRotor(enigmaView.getRotor2()));
+                enigmaModel.setRotor(2, stringToRotor(enigmaView.getRotor3()));
                 for(int i = 0; i < rotorPositions.size(); i++) {
                     enigmaModel.changeRotorPosition(i, rotorPositions.get(i));
                 }

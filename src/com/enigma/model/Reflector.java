@@ -31,8 +31,9 @@ public class Reflector extends LetterMapping{
     private @NotNull
     List<String> getConstantMapping(@NotNull Reflectors reflectorName) {
         return switch (reflectorName) {
-            case ReflectorA -> Arrays.asList("YRUHQSLDPXNGOKMIEBFZCWVJAT".split(""));
+            case ReflectorA -> Arrays.asList("EJMZALYXVBWFCRQUONTSPIKHGD".split(""));
             case ReflectorB -> Arrays.asList("FVPJIAOYEDRZXWGCTKUQSBNMHL".split(""));
+            case ReflectorC -> Arrays.asList("YRUHQSLDPXNGOKMIEBFZCWVJAT".split(""));
             default -> Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
         };
     }
