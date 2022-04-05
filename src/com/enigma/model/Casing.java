@@ -9,7 +9,16 @@ public class Casing {
     private Reflector reflector;
     // 0 represents the left-most and slowest rotor
     private ArrayList<Rotor> rotors = new ArrayList<>();
-    // used to decide if a rotor should rotate, note that a rotor's numeric position is totally unrelated
+    // infiniteCounter is used to decide if a rotor should rotate, note that a rotor's numeric position is totally unrelated
+    // Note on a behavioural decision here:
+    // the casing is state-less i.e. each single 'encryption' is treated independently
+    // to get a state like observation of the machine you can pass in a large string to encrypt.
+    // Once an encryption has been done, the 'memory' of an upcoming rotation is wiped - so if you encrypted a 25 letter
+    // string and a rotor to the left was about to rotate on the next iteration - no such thing will happen and to
+    // encounter such a rotation you will have to encrypt a string >25 letters at once.
+    // such a decision is necessary to remove the ambiguity of what changing a rotor-slider on a GUI means as a physical
+    // action - is it removing a rotor and then putting it back at a desired place or is it rotating it inside the machine
+    // (thus possibly affecting the rotors to its left) - in this case we chose the former.
     private int infiniteCounter = 1;
 
     public Casing() {
@@ -26,8 +35,9 @@ public class Casing {
         }
         while(rotors.get(rotorIndex).getNumericPosition() != newPosition) {
             // manual rotation (changing slider) is like taking out the rotor and putting it back in at a certain
-            // position, so we don't call executeRotorMotion() to rotate ones to the left or change infiniteCounter
+            // position, so we don't call executeRotorMotion() to rotate ones to the left
             rotors.get(rotorIndex).Rotate();
+            infiniteCounter = 1;
         }
     }
 
@@ -40,6 +50,7 @@ public class Casing {
     }
 
     public String getOutput(String input) {
+        infiniteCounter = 1;
         String output = "";
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);

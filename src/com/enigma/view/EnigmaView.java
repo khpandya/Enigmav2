@@ -20,7 +20,8 @@ public class EnigmaView extends JFrame implements IView {
             slider.setPaintTicks(true);
             slider.setPaintLabels(true);
             slider.setLabelTable(slider.createStandardLabels(1));
-            slider.setMajorTickSpacing(5);
+            slider.setMajorTickSpacing(1);
+            slider.setSnapToTicks(true);
             sliders.add(slider);
             mainPanel.add(slider);
         }
