@@ -16,8 +16,8 @@ public class EnigmaController {
     public EnigmaController(IModel model, IView view) {
         this.enigmaModel = model;
         this.enigmaView = view;
-        enigmaView.addEncryptListener(new EncryptionListener());
         enigmaView.addResetListener(new ResetListener());
+        enigmaView.addEncryptListener(new EncryptionListener());
         enigmaView.addConnectListener(new connectListener());
         enigmaView.addDeleteListener(new deleteListener());
     }
@@ -77,11 +77,17 @@ public class EnigmaController {
 
     class ResetListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            enigmaModel.resetToDefaultSettings();
-            enigmaView.setOutput("");
-            enigmaView.resetRotorPositions();
-            enigmaView.resetPlugboard();
-            enigmaView.resetRotorsAndReflector();
+            try {
+                enigmaModel.resetToDefaultSettings();
+                enigmaView.setOutput("");
+                enigmaView.resetRotorPositions();
+                enigmaView.resetPlugboard();
+                enigmaView.resetRotorsAndReflector();
+            }
+            catch (Exception ex) {
+                enigmaView.displayError("error resetting");
+            }
+
         }
     }
 

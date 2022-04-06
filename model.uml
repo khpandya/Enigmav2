@@ -3,84 +3,79 @@
   <ID>JAVA</ID>
   <OriginalElement>com.enigma.model</OriginalElement>
   <nodes>
-    <node x="179.64583333333331" y="0.0">com.enigma.model.LetterMapping</node>
-    <node x="168.25000000000006" y="152.0">com.enigma.model.Rotor</node>
-    <node x="0.0" y="401.5">com.enigma.model.Plugboard</node>
-    <node x="358.63392857142856" y="357.0">com.enigma.model.Casing</node>
-    <node x="578.6339285714286" y="369.0">com.enigma.model.IModel</node>
-    <node x="-292.391979144154" y="58.55370650529494">com.enigma.model.EnigmaMachine</node>
-    <node x="460.25" y="174.0">com.enigma.model.Reflector</node>
+    <node x="622.0822617246597" y="174.5">com.enigma.model.Plugboard</node>
+    <node x="308.49999999999994" y="0.0">com.enigma.model.LetterMapping</node>
+    <node x="0.0" y="152.0">com.enigma.model.Rotor</node>
+    <node x="166.29464285714283" y="402.0">com.enigma.model.Casing</node>
+    <node x="-343.4305975794251" y="0.0">com.enigma.model.IModel</node>
+    <node x="-343.4305975794251" y="402.0">com.enigma.model.EnigmaMachine</node>
+    <node x="291.99999999999994" y="196.5">com.enigma.model.Reflector</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.Plugboard" relationship="TO_ONE">
-      <point x="141.5" y="0.0" />
-      <point x="93.0" y="196.55370650529494" />
-      <point x="-15.0" y="-71.5" />
+      <point x="145.0" y="137.5" />
+      <point x="745.0822617246597" y="710.5" />
+      <point x="15.0" y="71.5" />
     </edge>
     <edge source="com.enigma.model.Casing" target="com.enigma.model.Rotor" relationship="CREATE">
-      <point x="-40.8839285714285" y="-116.0" />
-      <point x="113.5" y="71.5" />
+      <point x="-29.294642857142833" y="-138.0" />
+      <point x="128.5" y="94.0" />
     </edge>
     <edge source="com.enigma.model.Plugboard" target="com.enigma.model.LetterMapping" relationship="GENERALIZATION">
       <point x="0.0" y="-71.5" />
-      <point x="108.0" y="126.0" />
-      <point x="308.146" y="126.0" />
-      <point x="1.6666666670062114E-4" y="50.0" />
+      <point x="730.0822617246597" y="126.0" />
+      <point x="437.0" y="126.0" />
+      <point x="5.6843418860808015E-14" y="50.0" />
     </edge>
     <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.Casing" relationship="CREATE">
-      <point x="0.0" y="138.0" />
-      <point x="-150.891979144154" y="562.0" />
-      <point x="-100.0" y="89.0" />
+      <point x="145.0" y="-33.0" />
+      <point x="-127.5" y="0.0" />
     </edge>
     <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.Plugboard" relationship="CREATE">
-      <point x="15.0" y="138.0" />
-      <point x="-135.891979144154" y="473.0" />
-      <point x="-108.0" y="0.0" />
+      <point x="145.0" y="122.5" />
+      <point x="730.0822617246597" y="695.5" />
+      <point x="0.0" y="71.5" />
     </edge>
     <edge source="com.enigma.model.Casing" target="com.enigma.model.Reflector" relationship="TO_ONE">
-      <point x="9.116071428571445" y="-116.0" />
-      <point x="-137.5" y="49.5" />
-    </edge>
-    <edge source="com.enigma.model.Rotor" target="com.enigma.model.LetterMapping" relationship="GENERALIZATION">
-      <point x="-5.6843418860808015E-14" y="-71.5" />
-      <point x="304.25" y="126.0" />
-      <point x="308.146" y="126.0" />
-      <point x="1.6666666670062114E-4" y="50.0" />
-    </edge>
-    <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.IModel" relationship="REALIZATION">
-      <point x="-30.0" y="138.0" />
-      <point x="-180.891979144154" y="606.5" />
-      <point x="720.1339285714286" y="606.5" />
-      <point x="0.0" y="104.0" />
-    </edge>
-    <edge source="com.enigma.model.Casing" target="com.enigma.model.Reflector" relationship="CREATE">
-      <point x="24.116071428571445" y="-116.0" />
+      <point x="20.70535714285711" y="-138.0" />
       <point x="-122.5" y="49.5" />
     </edge>
+    <edge source="com.enigma.model.Rotor" target="com.enigma.model.LetterMapping" relationship="GENERALIZATION">
+      <point x="0.0" y="-94.0" />
+      <point x="136.0" y="126.0" />
+      <point x="437.0" y="126.0" />
+      <point x="5.6843418860808015E-14" y="50.0" />
+    </edge>
+    <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.IModel" relationship="REALIZATION">
+      <point x="0.0" y="-171.0" />
+      <point x="0.0" y="137.0" />
+    </edge>
+    <edge source="com.enigma.model.Casing" target="com.enigma.model.Reflector" relationship="CREATE">
+      <point x="5.70535714285711" y="-138.0" />
+      <point x="-137.5" y="49.5" />
+    </edge>
     <edge source="com.enigma.model.Casing" target="com.enigma.model.Rotor" relationship="TO_MANY">
-      <point x="-25.8839285714285" y="-116.0" />
-      <point x="128.5" y="71.5" />
+      <point x="-120.0" y="-138.0" />
+      <point x="37.79464285714283" y="94.0" />
     </edge>
     <edge source="com.enigma.model.EnigmaMachine" target="com.enigma.model.Casing" relationship="TO_ONE">
-      <point x="-15.0" y="138.0" />
-      <point x="-165.891979144154" y="577.0" />
-      <point x="-100.0" y="104.0" />
+      <point x="145.0" y="0.0" />
+      <point x="-127.5" y="33.0" />
     </edge>
     <edge source="com.enigma.model.Reflector" target="com.enigma.model.LetterMapping" relationship="GENERALIZATION">
-      <point x="0.0" y="-49.5" />
-      <point x="605.25" y="126.0" />
-      <point x="308.146" y="126.0" />
-      <point x="1.6666666670062114E-4" y="50.0" />
+      <point x="5.6843418860808015E-14" y="-49.5" />
+      <point x="5.6843418860808015E-14" y="50.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.9438297872340425" showDependencies="true" x="284.5" y="303.5" />
+  <settings layout="Hierarchic" zoom="0.8651832460732984" showDependencies="true" x="247.4999999999999" y="371.99999999999994" />
   <SelectedNodes>
     <node>com.enigma.model.EnigmaMachine</node>
   </SelectedNodes>
   <Categories>
     <Category>Constructors</Category>
     <Category>Fields</Category>
+    <Category>Inner Classes</Category>
     <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
