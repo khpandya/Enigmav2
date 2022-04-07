@@ -10,6 +10,7 @@ public class MVCEnigma {
         EnigmaView enigmaView = new EnigmaView();
         IModel enigmaModel = new EnigmaMachine();
         EnigmaController enigmaController = new EnigmaController(enigmaModel, enigmaView);
+        enigmaView.setSize(600, 1200);
         enigmaView.setVisible(true);
     }
 }
